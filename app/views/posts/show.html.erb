@@ -1,19 +1,30 @@
-<p>
- <h1> <%= @post.title %> </h1>
-</p>
-<br>
-<p>
-  <%= @post.text %>
-</p>
+<div class="entry">
+  <h2><%= @post.title %></h2>
+  <div class="meta">
+    <i class="icon-calendar"></i><%= @post.created_at.strftime("Created at %m/%d/%Y")%>
+    <span><i class="icon-comment"></i> <a href="#">2 Comments</a><span>
+    <span class="pull-right"><%= link_to 'Show', @post %> |
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  </div>
+
+  <div class="row">
+    <div class="span8">
+       <div class="posts">
+          <p><%= @post.text %></p>
+      </div>
+    </div>
+  </div>
 
 <hr>
-
-<h3>Comments:</h3>
+<h4>Comments:</h4>
 <%= render @post.comments %>
 <hr>
 
-<h4>Add a comment:</h4>
+<h5>Add a comment:</h5>
 <%= render "comments/form" %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Home', '/posts' %>
+
+</div>

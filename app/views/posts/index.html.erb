@@ -1,17 +1,27 @@
-<h1>My Blog</h1>
-<hr>
 
 <% @post.each do |post| %>
 
-  <h2><%= post.title %></h2>
-  <p><%= post.text %></p>
-  <br>
-  <%= link_to 'Show', post %> |
-  <%= link_to 'Edit', edit_post_path(post) %> |
-  <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-<hr>
+  <div class="entry">
+  <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
+  <div class="meta">
+    <i class="icon-calendar"></i><%= post.created_at.strftime("Created at %m/%d/%Y")%>
+    <span><i class="icon-comment"></i> <a href="#">2 Comments</a><span>
+    <span class="pull-right">
+      <%= link_to 'Show', post %> |
+      <%= link_to 'Edit', edit_post_path(post) %> |
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </span>
+  </div>
+
+  <div class="row">
+    <div class="span8">
+       <div class="posts">
+          <p><%= post.text %></p>
+      </div>
+    </div>
+  </div>
+  <div class="button"><%= link_to 'Read More...', post %></div>
+</div>
 <% end %>
 
-<p><%= link_to 'New Post', new_post_path %><p>
-
-
+<%= render "posts/widget" %>
