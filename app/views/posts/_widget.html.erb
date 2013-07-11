@@ -5,7 +5,7 @@
    <div class="widget">
       <h4>Recent Posts</h4>
           <ul>
-             <%= @post.each do |post| %> 
+             <% @post.each do |post| %> 
               <li><%= link_to post.title, post %></li>
              <% end %>
          </ul>
