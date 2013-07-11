@@ -1,5 +1,5 @@
 
-<% @post.each do |post| %>
+<% @post.reverse.each do |post| %>
 
   <div class="entry">
   <h2><a href='/posts/<%= post.id %>'><%= post.title %></a></h2>
@@ -16,6 +16,7 @@
   <div class="row">
     <div class="span8">
        <div class="posts">
+        <%= image_tag post.image_url.to_s if post.image? %>
           <p><%= post.text %></p>
       </div>
     </div>
